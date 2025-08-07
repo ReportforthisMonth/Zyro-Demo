@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spline 3D Viewer Preview</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+    spline-viewer {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Check if environment supports Spline and avoid MetaMask triggers -->
+  <script type="module">
+    // Dynamically import the Spline viewer only if no MetaMask required
+    try {
+      import('https://unpkg.com/@splinetool/viewer@1.10.42/build/spline-viewer.js').then(() => {
+        const viewer = document.createElement('spline-viewer');
+        viewer.setAttribute('url', 'https://prod.spline.design/wzt4Vc6rAR2GABaX/scene.splinecode');
+        document.body.appendChild(viewer);
+      });
+    } catch (e) {
+      console.error('Failed to load Spline viewer:', e);
+    }
+  </script>
+</body>
+</html>
